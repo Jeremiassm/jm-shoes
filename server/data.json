@@ -1,0 +1,109 @@
+[
+  {
+    "id": 1,
+    "name": "GT cut 4",
+    "brand": "Nike",
+    "price": 260000,
+    "sizes": [8, 8.5, 9, 9.5, 10, 11],
+    "images": [
+      "/uploads/1-1780434361605-b0vujptp9.webp",
+      "/uploads/1-1780434361713-t0lcblm4q.webp",
+      "/uploads/1-1780434361801-snjboozw1.webp",
+      "/uploads/1-1780434361872-7y8knen6q.webp",
+      "/uploads/1-1780434361958-lqemciv5q.webp",
+      "/uploads/1-1780434362036-1vx1ex0os.webp",
+      "/uploads/1-1780434362117-ys4rr45y2.webp",
+      "/uploads/1-1780434362214-a9yu4ret3.webp",
+      "/uploads/1-1780434362318-5gem7m0wg.webp",
+      "/uploads/1-1780434362409-uy2yfc0ua.webp"
+    ],
+    "description": "La Nike GT Cut 4 es una zapatillas de rendimiento premium diseñada para jugadores rápidos que buscan máxima reactividad. Con tecnología ZoomX y una suela optimizada para cambios de dirección bruscos.",
+    "review": {
+      "traction": 9.5,
+      "cushion": 9.5,
+      "materials": 8.5,
+      "durability": 8,
+      "fit": 8.5
+    },
+    "pros": [
+      "Excelente amortiguación ZoomX",
+      "Suela muy estable para cambios de dirección",
+      "Gran sensación de reactividad",
+      "Upper transpirable y resistente"
+    ],
+    "cons": [
+      "Más pesada que modelos anteriores",
+      "Precio elevado"
+    ],
+    "createdAt": "2026-06-02T00:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "name": "Kobe 9 elite low EM protro",
+    "brand": "Nike",
+    "price": 380000,
+    "sizes": [8, 9, 9.5, 10, 10.5, 11],
+    "images": [
+      "/uploads/2-1780434362496-yddu4q7ez.webp",
+      "/uploads/2-1780434362618-uhnpo0as2.webp"
+    ],
+    "description": "La Kobe 9 Elite Low EM Protro es una de las zapatillas más icónicas de Kobe Bryant. Diseñada para canchas indoor, ofrece un agarre excepcional y una sensación de cancha inigualable.",
+    "review": {
+      "traction": 10,
+      "cushion": 8.5,
+      "materials": 8.5,
+      "durability": 7.5,
+      "fit": 9
+    },
+    "pros": [
+      "Tracción excepcional en parquet",
+      "Muy liviana y flexible",
+      "Gran sensación de contacto con el piso",
+      "Diseño icónico de Kobe"
+    ],
+    "cons": [
+      "Suela poco duradera en canchas abrasive",
+      "Soporte lateral limitado para tobillo",
+      "Precio muy elevado"
+    ],
+    "createdAt": "2026-06-02T00:00:00.000Z"
+  },
+  {
+    "id": 3,
+    "name": "JA 3 let me be ja",
+    "brand": "Nike",
+    "price": 290000,
+    "sizes": [7.5, 8, 8.5, 9, 10, 11],
+    "images": [
+      "/uploads/3-1780434362837-a0cft7i3m.webp",
+      "/uploads/3-1780434362942-qauzvrqt4.webp",
+      "/uploads/3-1780434363029-gdi7lqrd1.webp",
+      "/uploads/3-1780434363122-78rercwp1.webp",
+      "/uploads/3-1780434363204-ckd195rve.webp",
+      "/uploads/3-1780434363283-wsct9gmqw.webp",
+      "/uploads/3-1780434363440-qe1zxkcat.webp",
+      "/uploads/3-1780434363584-u6yaj6f0v.webp",
+      "/uploads/3-1780434363733-n8i2alzow.webp"
+    ],
+    "description": "Los JA 3 son los tenis más reactivos de Ja Morant hasta la fecha. Con espuma híbrida ZoomX de largo completo que proporciona una respuesta explosive en cada paso. Diseñados para el juego rápido y agresivo.",
+    "review": {
+      "traction": 10,
+      "cushion": 9.5,
+      "materials": 9.5,
+      "durability": 9,
+      "fit": 9.5
+    },
+    "pros": [
+      "Amortiguación ZoomX muy responsiva",
+      "Diseño agresivo y único",
+      "Muy comodas desde el primer uso",
+      "Excelente para jugadores explosivos"
+    ],
+    "cons": [
+      "Materiales algo simples",
+      "Estabilidad lateral podría mejorar",
+      "No recomendada para pies anchos"
+    ],
+    "createdAt": "2026-06-02T00:00:00.000Z"
+  }
+]
