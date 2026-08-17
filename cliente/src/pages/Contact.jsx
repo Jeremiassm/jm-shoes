@@ -1,4 +1,4 @@
-import { MapPin, MessageCircle, Mail, Send, CheckCircle } from "lucide-react";
+import { MapPin, MessageCircle, Mail, CheckCircle } from "lucide-react";
 import { useState } from "react";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
@@ -11,9 +11,10 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const subject = `Consulta de ${form.name || "visitante"} desde la web`;
-    const body = `Nombre: ${form.name}\nEmail: ${form.email}\n\nMensaje:\n${form.message}`;
-    window.location.href = getEmailLink(subject, body);
+    const name = form.name.trim() || "Visitante";
+    const emailLine = form.email.trim() ? ` (${form.email.trim()})` : "";
+    const message = `Hola! Soy ${name}${emailLine}.\n\n${form.message.trim()}`;
+    window.open(getWhatsAppLink(message), "_blank", "noopener,noreferrer");
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 5000);
   };
@@ -81,7 +82,7 @@ export default function Contact() {
               Envianos un mensaje
             </h2>
             <p className="text-zinc-400 text-sm mb-6">
-              Completá el formulario y te redirigiremos a tu cliente de email para enviar la consulta.
+              Completá el formulario y te abrimos WhatsApp con tu mensaje listo para enviar.
             </p>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
@@ -127,16 +128,16 @@ export default function Contact() {
               {submitted && (
                 <div className="flex items-center gap-2 text-green-400 text-sm bg-green-500/10 p-3 rounded-lg">
                   <CheckCircle size={16} />
-                  <span>Abriendo tu cliente de email...</span>
+                  <span>Abriendo WhatsApp con tu mensaje...</span>
                 </div>
               )}
 
               <button
                 type="submit"
-                className="bg-red-600 hover:bg-red-700 transition px-8 py-3 rounded-full font-semibold uppercase tracking-widest text-sm flex items-center gap-2"
+                className="bg-green-500 hover:bg-green-600 transition px-8 py-3 rounded-full font-semibold uppercase tracking-widest text-sm flex items-center gap-2"
               >
-                <Send size={16} />
-                Enviar mensaje
+                <MessageCircle size={16} />
+                Enviar por WhatsApp
               </button>
             </form>
           </div>

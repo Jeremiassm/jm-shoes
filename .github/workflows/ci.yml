@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    name: Lint, build & server tests
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: jmshoes_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/jmshoes_test
+      JWT_SECRET: ci-test-jwt-secret-please-change
+      JWT_REFRESH_SECRET: ci-test-refresh-secret-please-change
+      NODE_ENV: test
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: |
+            cliente/package-lock.json
+            server/package-lock.json
+
+      - name: Install cliente deps
+        run: npm --prefix cliente ci
+
+      - name: Install server deps
+        run: npm --prefix server ci
+
+      - name: Lint cliente
+        run: npm --prefix cliente run lint
+
+      - name: Build cliente
+        run: npm --prefix cliente run build
+
+      - name: Server tests
+        run: npm --prefix server test

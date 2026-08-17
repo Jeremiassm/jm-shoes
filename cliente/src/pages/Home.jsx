@@ -1,5 +1,5 @@
 import Navbar from "../components/layout/Navbar";
-import Hero from "../components/home/Hero";
+import Hero from "../components/home/SneakerHero";
 import FeaturedSneakers from "../components/home/FeaturedSneaker";
 import TrustStrip from "../components/home/TrustStrip";
 import Brands from "../components/home/Brands";
@@ -18,8 +18,8 @@ export default function Home() {
       <Navbar />
       <Hero />
       <FeaturedSneakers />
-      <TrustStrip />
       <Brands />
+      <TrustStrip />
       <HowItWorksPreview />
       <Footer />
     </div>

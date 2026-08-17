@@ -1,23 +1,45 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { formatPrice } from "../../config/contact";
+import { isInStock, getReviewAverage } from "../../lib/sneakers";
 
-export default function SneakerCard({ sneaker }) {
+const FALLBACK_IMG = "/placeholder-sneaker.webp";
+
+function getCardImage(sneaker) {
+  // Priorizar thumb devuelto por el upload; caer a la imagen principal.
+  return sneaker.thumbUrl || sneaker.images?.[0] || sneaker.image || FALLBACK_IMG;
+}
+
+export default function SneakerCard({ sneaker, priority = false }) {
   const [imgError, setImgError] = useState(false);
-  const imageUrl = Array.isArray(sneaker.images) ? sneaker.images[0] : sneaker.image;
-  const fallback = "https://via.placeholder.com/600x400/18181b/52525b?text=JM+Shoes";
+  const imageUrl = getCardImage(sneaker);
+  const inStock = isInStock(sneaker);
+  const score = getReviewAverage(sneaker);
 
   return (
-    <Link to={`/zapatilla/${sneaker.id}`} className="block" aria-label={`Ver ${sneaker.name}`}>
-      <div className="group bg-zinc-900 rounded-3xl overflow-hidden border border-white/5 hover:border-red-500/40 transition cursor-pointer h-full flex flex-col">
-        <div className="overflow-hidden bg-zinc-800">
+    <Link
+      to={`/zapatilla/${sneaker.slug || sneaker.id}`}
+      className="block group"
+      aria-label={`Ver ${sneaker.name}`}
+    >
+      <article className="bg-zinc-900 rounded-3xl overflow-hidden border border-white/5 hover:border-red-500/40 transition h-full flex flex-col">
+        <div className="overflow-hidden bg-zinc-800 relative aspect-square">
           <img
-            src={imgError ? fallback : imageUrl}
+            src={imgError ? FALLBACK_IMG : imageUrl}
             alt={sneaker.name}
             onError={() => setImgError(true)}
-            loading="lazy"
-            className="w-full h-72 object-cover group-hover:scale-110 transition duration-500"
+            loading={priority ? "eager" : "lazy"}
+            fetchPriority={priority ? "high" : "auto"}
+            decoding="async"
+            width={600}
+            height={600}
+            className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
           />
+          {!inStock && (
+            <span className="absolute top-3 right-3 bg-red-600/90 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+              Sin stock
+            </span>
+          )}
         </div>
 
         <div className="p-5 flex flex-col flex-1">
@@ -31,14 +53,20 @@ export default function SneakerCard({ sneaker }) {
 
           <div className="flex items-center justify-between mt-auto pt-5">
             <span className="text-xl font-semibold font-display">
-              ${formatPrice(sneaker.price)}
+              {formatPrice(sneaker.price)}
             </span>
             <span className="bg-red-600 group-hover:bg-red-700 transition px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-widest">
-              Ver más
+              Ver mas
             </span>
           </div>
+
+          {score > 0 && (
+            <p className="text-zinc-500 text-xs mt-2" aria-label={`Puntuacion ${score} de 10`}>
+              {score}/10
+            </p>
+          )}
         </div>
-      </div>
+      </article>
     </Link>
   );
 }

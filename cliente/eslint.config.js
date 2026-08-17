@@ -17,5 +17,10 @@ export default defineConfig([
       globals: globals.browser,
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
+    rules: {
+      // Demasiado agresiva en React 19 para patrones legitimos de fetch en useEffect.
+      // Mantenemos la convencion de fetches en useEffect con flag cancelled.
+      'react-hooks/set-state-in-effect': 'off',
+    },
   },
 ])

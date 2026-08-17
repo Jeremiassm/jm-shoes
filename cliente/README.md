@@ -2,6 +2,26 @@
 
 Tienda online de zapatillas de basketball exclusivas, traídas de Estados Unidos. Catálogo, contacto y panel de administración.
 
+## Cambios recientes
+
+- **Accesibilidad**: se agregó un enlace "Saltar al contenido principal" en `cliente/index.html` con clases `sr-only` + `focus:not-sr-only`, y los estilos auxiliares correspondientes en `cliente/src/index.css` (`.sr-only`, `.focus\:not-sr-only:focus`, `.font-body`, token `--font-body`).
+- **Lint a11y (opcional)**: se recomienda sumar `eslint-plugin-jsx-a11y` al cliente. No se instaló para no agregar dependencias:
+  ```bash
+  npm install --save-dev eslint-plugin-jsx-a11y@latest
+  ```
+  Una vez instalada, agregar al array `extends` dentro de `cliente/eslint.config.js`:
+  ```js
+  import jsxA11y from 'eslint-plugin-jsx-a11y';
+  // ...
+  extends: [
+    jsxA11y.flatConfigs.recommended,
+  ],
+  ```
+- **SEO**: se eliminó `cliente/public/sitemap.xml` estático porque el server expone un sitemap dinámico en `/sitemap.xml` (`server/routes/sitemap.js`).
+- **DX**: se agregó `.nvmrc` (Node 20) y `.editorconfig` en la raíz del repo para alinear versiones de Node y estilo de archivos entre editores.
+- **Engines**: se agregó `"engines": { "node": ">=20.0.0" }` en `cliente/package.json` (el server ya lo tenía).
+- **CI**: se creó `.github/workflows/ci.yml` con un job que corre lint + build del cliente y tests del server (con servicio de PostgreSQL y `node --test`) ante cada push/PR a `main`.
+
 ## Stack
 
 ### Frontend (`cliente/`)
@@ -128,3 +148,24 @@ Para producción, hay que actualizar:
 - CORS origin (en `server.js`).
 - `secure: true` en la cookie de refresh.
 - Secrets en variables de entorno del host.
+
+Alternativa con Docker: ver `docker-compose.yml` en la raíz (levanta `db` + `server` + `client` con nginx como reverse proxy).
+
+## Tests
+
+```bash
+# Backend (usa node --test nativo, sin dependencias extra)
+npm --prefix .\server test
+```
+
+Cubre funciones puras en `server/lib/` (mapping, validation) y los helpers de filtros del cliente.
+
+## Husky (git hooks)
+
+No viene instalado por defecto para evitar dependencias extra. Para agregarlo después:
+
+```bash
+npm install --save-dev husky lint-staged
+npx husky init
+# editar .husky/pre-commit para correr npm test en server/ y npm run lint en cliente/
+```

@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const log = require("../lib/logger");
 
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers["authorization"];
@@ -10,11 +11,19 @@ const authenticateToken = (req, res, next) => {
 
   jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
     if (err) {
-      return res.status(403).json({ error: "Token inválido o expirado" });
+      log.warn("auth", "Token invalido o expirado", { path: req.path });
+      return res.status(403).json({ error: "Token invalido o expirado" });
     }
     req.user = user;
     next();
   });
 };
 
-module.exports = { authenticateToken };
+const requireRole = (role) => (req, res, next) => {
+  if (!req.user || req.user.role !== role) {
+    return res.status(403).json({ error: "Permisos insuficientes" });
+  }
+  next();
+};
+
+module.exports = { authenticateToken, requireRole };

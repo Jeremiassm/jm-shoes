@@ -21,14 +21,11 @@ export default function Brands() {
     <section className="bg-black">
       <div className="max-w-7xl mx-auto px-6 py-24">
         <div className="text-center mb-12">
-          <p className="text-red-500 uppercase tracking-widest text-sm font-semibold mb-3">
-            Las mejores marcas
-          </p>
           <h2 className="font-display text-5xl md:text-6xl font-bold uppercase tracking-tight">
-            Brands we carry
+            Las mejores marcas, encontralas acá
           </h2>
           <p className="text-zinc-400 mt-4 max-w-xl mx-auto">
-            Trabajamos con las marcas líderes del basketball para traerte modelos exclusivos.
+            Trabajamos con las marcas líderes del básquet para traerte modelos exclusivos.
           </p>
         </div>
 

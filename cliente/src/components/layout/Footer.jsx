@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { BRAND_NAME, BRAND_TAGLINE, EMAIL, getEmailLink } from "../../config/contact";
+import { BRAND_NAME, EMAIL } from "../../config/contact";
+import logoLight from "/logo.png";
 
 const socialLinks = [
   {
@@ -43,6 +44,7 @@ const socialLinks = [
 const navLinks = [
   { to: "/", label: "Inicio" },
   { to: "/zapatillas", label: "Zapatillas" },
+  { to: "/nosotros", label: "Nosotros" },
   { to: "/como-comprar", label: "Cómo comprar" },
   { to: "/contacto", label: "Contacto" },
 ];
@@ -51,6 +53,7 @@ const helpLinks = [
   { to: "/como-comprar", label: "Cómo comprar" },
   { to: "/contacto", label: "Contacto" },
   { to: "/zapatillas", label: "Catálogo" },
+  { to: "/nosotros", label: "Nosotros" },
 ];
 
 export default function Footer() {
@@ -59,16 +62,17 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="grid md:grid-cols-4 gap-10">
           <div className="md:col-span-2">
-            <Link to="/" className="flex items-center gap-2 mb-4">
+            <Link to="/" className="flex items-center gap-3 mb-4" aria-label={`${BRAND_NAME} - Inicio`}>
+              <img src={logoLight} alt="" width={60} height={28} className="h-7 w-auto" aria-hidden="true" />
               <span className="font-display text-2xl font-bold tracking-tight">
                 {BRAND_NAME}
               </span>
             </Link>
             <p className="text-zinc-400 text-sm leading-relaxed max-w-md">
-              {BRAND_TAGLINE}. Zapatillas exclusivas traídas directamente de Estados Unidos para jugadores que buscan lo mejor.
+              Zapatillas exclusivas, desde Estados Unidos a Argentina en un solo paso.
             </p>
             <a
-              href={getEmailLink()}
+              href={`mailto:${EMAIL}`}
               className="text-zinc-400 hover:text-red-500 transition text-sm mt-4 inline-block"
             >
               {EMAIL}

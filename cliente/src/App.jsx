@@ -1,11 +1,20 @@
 import AppRouter from "./router/AppRouter";
 import { CatalogProvider } from "./context/CatalogProvider";
+import { AuthProvider } from "./context/AuthContext";
+import { ToastProvider } from "./components/Toast";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 function App() {
   return (
-    <CatalogProvider>
-      <AppRouter />
-    </CatalogProvider>
+    <ErrorBoundary>
+      <ToastProvider>
+        <AuthProvider>
+          <CatalogProvider>
+            <AppRouter />
+          </CatalogProvider>
+        </AuthProvider>
+      </ToastProvider>
+    </ErrorBoundary>
   );
 }
 

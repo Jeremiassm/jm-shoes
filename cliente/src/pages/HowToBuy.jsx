@@ -18,47 +18,42 @@ import { getWhatsAppLink, WHATSAPP_NUMBER, EMAIL } from "../config/contact";
 
 const steps = [
   {
-    number: "01",
     icon: Search,
     title: "Explorá el catálogo",
     description:
-      "Recorré nuestro catálogo de zapatillas exclusivas. Filtrá por marca, talle, precio o puntuación para encontrar el modelo ideal para tu juego.",
+      "Recorré nuestro catálogo de zapatillas. Filtrá por marca, talle, precio o puntuación de review para encontrar el modelo ideal para tu juego.",
   },
   {
-    number: "02",
     icon: MessageCircle,
     title: "Escribinos por WhatsApp",
     description:
       "Hacé click en 'Pedir por WhatsApp' desde cualquier producto o contactanos directamente. Te respondemos a la brevedad con disponibilidad, talles y cualquier duda que tengas.",
   },
   {
-    number: "03",
     icon: CreditCard,
     title: "Confirmá talle y pago",
     description:
       "Coordinamos el método de pago que prefieras: transferencia bancaria, efectivo o MercadoPago. Confirmamos dirección de envío y el pedido queda reservado.",
   },
   {
-    number: "04",
     icon: Package,
-    title: "Preparamos tu pedido",
+    title: "Preparamos tu paquete directamente de USA",
     description:
-      "Una vez confirmado el pago, embalamos tu pedido con cuidado y verificamos la autenticidad del producto antes de despacharlo.",
+      "Una vez confirmado el pago, solicitamos tu pedido y esperamos que llegue al pais en 20 días hábiles.",
   },
   {
-    number: "05",
     icon: Truck,
     title: "Recibí en tu casa",
     description:
-      "Te enviamos el pedido a cualquier punto del país con número de seguimiento. Los tiempos varían según la zona, pero generalmente entre 3 y 7 días hábiles.",
+      "Una vez llegado al pais, te enviamos el pedido a cualquier punto del país con número de seguimiento.",
   },
 ];
 
 const paymentMethods = [
-  { name: "Transferencia bancaria", detail: "Descuento del 10% pagando por transferencia" },
-  { name: "Efectivo", detail: "Coordiná el pago contra entrega en CABA" },
-  { name: "MercadoPago", detail: "Tarjeta de crédito, débito o dinero en cuenta" },
-  { name: "Cryptos (USDT)", detail: "Consultá por otras opciones disponibles" },
+  { name: "Transferencia bancaria", detail: "Coordinamos los datos por WhatsApp" },
+  { name: "Efectivo", detail: "Coordiná el pago (Solo disponible en Resistencia)" },
+  { name: "MercadoPago", detail: "Tarjeta de crédito, débito o dinero en cuenta de mercado pago (no manejamos los intereses de la aplicación)" },
+  { name: "Cryptos (USDT)", detail: "5% de descuento pagando en crypto (USDT)" },
 ];
 
 const faqs = [
@@ -68,19 +63,15 @@ const faqs = [
   },
   {
     q: "¿Hacen envíos a todo el país?",
-    a: "Sí, hacemos envíos a cualquier punto de Argentina a través de Correo Argentino o empresas de encomienda. Los tiempos y costos dependen de la zona.",
+    a: "Sí, hacemos envíos a cualquier punto de Argentina a través de Andreani. Los tiempos y costos dependen de la zona.",
   },
   {
     q: "¿Cuánto demora el envío?",
-    a: "Para CABA y GBA el envío es de 3 a 5 días hábiles. Para el interior del país, entre 5 y 10 días hábiles, dependiendo de la localidad.",
+    a: "En Resistencia la entrega es inmediata ni bien llega al depósito. Al resto del país, 7 días hábiles.",
   },
   {
     q: "¿Puedo cambiar o devolver un producto?",
-    a: "Sí, aceptamos cambios dentro de los 7 días posteriores a la recepción. El producto debe estar sin uso y en su empaque original. Los costos de envío corren por cuenta del comprador salvo error nuestro.",
-  },
-  {
-    q: "¿Cómo sé qué talle pedir?",
-    a: "Cada ficha de producto tiene los talles disponibles. Si tenés dudas, escribinos por WhatsApp y te asesoramos según tu pisada y uso (cancha indoor/outdoor).",
+    a: "Sí, aceptamos cambios dentro de los 7 días posteriores a la recepción. El producto debe estar sin uso y en su empaque original. Los costos de envío corren por cuenta del comprador.",
   },
   {
     q: "¿Tienen stock de todos los modelos?",
